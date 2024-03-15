@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea-deployment 
+  labels:
+    app: gitea 
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: gitea 
+  template:
+    metadata:
+      labels:
+        app: gitea 
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        envFrom:
+        - configMapRef:
+            name: database-config
+        ports:
+        - containerPort: 5432
+          name: postgres-port
+      - name: gitea 
+        image: gitea/gitea:latest
+        envFrom:
+        - configMapRef:
+            name: gitea-config
+        volumeMounts:
+        - mountPath: /data
+          name: data
+        ports:
+        - containerPort: 22
+          name: gitea-ssh-port
+        - containerPort: 3000
+          name: gitea-port
+      volumes:
+      - name: data
+        hostPath:
+          path: {{ .Values.data }}
