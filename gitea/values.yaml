@@ -1,3 +1,4 @@
 # where on the host does gitea use
-data: /path/to/dir/on/host 
-host: cube.local
+data: /mnt/storage/gitea 
+host: gitea.collinsapps.dev
+tls_secret_name: gitea-tls

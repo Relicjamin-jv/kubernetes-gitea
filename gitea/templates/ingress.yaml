@@ -12,3 +12,5 @@ spec:
     services:
     - name: gitea-service 
       port: 3000
+  tls:
+    secretName: {{ .Values.tls_secret_name }}

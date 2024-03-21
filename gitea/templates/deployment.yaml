@@ -28,7 +28,7 @@ spec:
           name: postgres-port
 
       - name: gitea 
-        image: gitea/gitea:latest
+        image: gitea/gitea:1.21-nightly
         envFrom:
         - configMapRef:
             name: gitea-config
