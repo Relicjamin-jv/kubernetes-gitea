@@ -20,9 +20,13 @@ spec:
         envFrom:
         - configMapRef:
             name: database-config
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-data
         ports:
         - containerPort: 5432
           name: postgres-port
+
       - name: gitea 
         image: gitea/gitea:latest
         envFrom:
@@ -40,3 +44,7 @@ spec:
       - name: data
         hostPath:
           path: {{ .Values.data }}
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: postgres-pvc
+

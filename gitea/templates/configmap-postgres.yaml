@@ -8,4 +8,5 @@ data:
   POSTGRES_DATABASE: gitea
   POSTGRES_DB: gitea
   POSTGRES_PASSWORD: gitea
+  PGDATA: /var/lib/postgresql/data
 
