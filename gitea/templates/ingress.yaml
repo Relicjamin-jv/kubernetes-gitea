@@ -8,7 +8,7 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`cube.local`)
+    match: Host(`{{ .Values.host }}`)
     services:
     - name: gitea-service 
       port: 3000

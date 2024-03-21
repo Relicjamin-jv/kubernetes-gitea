@@ -1,2 +1,3 @@
 # where on the host does gitea use
-data: "/path/to/dir/on/host" 
+data: /path/to/dir/on/host 
+host: cube.local
